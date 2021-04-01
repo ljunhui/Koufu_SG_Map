@@ -64,7 +64,7 @@ app.layout = html.Div(
                      # Koufu Group's Operations in Singapore
                      **Please note that this site has not been optimized for mobile.**
                      
-                     For source code and more information, please refer to my [GitHub](https://github.com/ljunhui/SG-Planning-Area-Visualization).
+                     For source code and more information, please refer to my [GitHub](https://github.com/ljunhui/Koufu_SG_Map).
                      """,
             style={"textAlign": "center"},
         ),

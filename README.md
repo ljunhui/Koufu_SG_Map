@@ -20,7 +20,7 @@
  As I am currently an employee of Koufu, the dashboard will render the location of outlets belonging to the organization. Only publicly available information will be used in this project.
 
  The link to the dashboard (not optimized for mobile devices) can be found here:
- > <https://immense-fortress-98546.herokuapp.com/>
+ > <https://koufu-sg-map.herokuapp.com/>
 
 The project is broken down into the following components:
 
