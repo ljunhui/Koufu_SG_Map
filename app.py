@@ -84,7 +84,7 @@ app.layout = html.Div(
                     - Identify best brands to bring into the subzone based on subzone age-group distribution.
                     
                     ###### Limitations:
-                    - Future work can explore the density of commercial/industrial but that is beyond the scope of this project.
+                    - Future work can explore the density of commercial/industrial areas but that is beyond the scope of this project.
                      """
         ),
         html.Hr(),
