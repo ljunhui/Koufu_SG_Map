@@ -1,16 +1,3 @@
-
-**Table of Contents**
-
-- [Visualizing the Geographical Data of Singapore](#visualizing-the-geographical-data-of-singapore)
-  - [Initial collection of raw data](#initial-collection-of-raw-data)
-  - [Pre-processing of data](#pre-processing-of-data)
-  - [Visualizations](#visualizations)
-  - [Publishing of App](#publishing-of-app)
-- [Discussion (you can skip this if you're just here for the code)](#discussion-you-can-skip-this-if-youre-just-here-for-the-code)
-  - [Future Work](#future-work)
-  - [Limitations](#limitations)
-  - [Reflection](#reflection)
-
 ## Visualizing the Geographical Data of Singapore
 
  A data science project to visualize the various Planning Areas of Singapore as drawn by the Urban Redevelopment Authority of Singapore.
