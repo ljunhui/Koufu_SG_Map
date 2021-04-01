@@ -77,14 +77,14 @@ app.layout = html.Div(
                     
                     - A data driven approach visualizing the population density of all 332 sub-zones found in Singapore and grouping them into 5 discrete brackets. Subzone information such as total area (in km2) and total population is provided in a tooltip.
                     - A table of summary is also provided at the bottom of the page that aggregates information about each subzone into their main planning areas.
-                    - The dashboard is meant to be used as a supplementary tool, allowing BD managers to make quick decisions zone demographics, paving the way for further exploration regarding the business viability of opening outlets in those zones.
+                    - The dashboard is meant to be used as a supplementary tool, allowing BD managers to make quick decisions about zone demographics, paving the way for further exploration regarding the business viability of opening outlets in those zones.
                     
                     ###### Future Work:
                     - Benchmark outlet sales performance against expected sales owing to population density.
                     - Identify best brands to bring into the subzone based on subzone age-group distribution.
                     
                     ###### Limitations:
-                    - Future work can explore the density of commercial/industrial areas but that is beyond the scope of this project.
+                    - Commercial/industrial areas were not well covered due to the lack of workforce information but that is beyond the scope of this project.
                      """
         ),
         html.Hr(),

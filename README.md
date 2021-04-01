@@ -1,4 +1,4 @@
-## Visualizing the Geographical Data of Singapore
+# Visualizing the Geographical Data of Singapore
 
  A data science project to visualize the various Planning Areas of Singapore as drawn by the Urban Redevelopment Authority of Singapore.
 
@@ -11,13 +11,13 @@
 
 The project is broken down into the following components:
 
-### Initial collection of raw data
+## Initial collection of raw data
 
 - `r_outletsdata.py` is used to collect existing outlets and their brands from [the company website](https://www.koufu.com.sg/our-brands/food-halls/). Returns a csv file that can be found in the data folder and can be reused.
 - `r_boundarydata.py` is used to generate a GeoJSON file from [data.gov.sg](https://data.gov.sg/dataset/master-plan-2019-subzone-boundary-no-sea). URL in the script is hard-coded because of extraction logic. Boundary data is unlikely to change often so this is not an issue for now.
 - `r_demographics.py` collects information from [singstat.gov](https://www.singstat.gov.sg/find-data/search-by-theme/population/geographic-distribution/latest-data) and filters for 2020 data.
 
-### Pre-processing of data
+## Pre-processing of data
 
 - `r2_cleanboundary.py` took the raw GeoJSON file and appended 3 additional columns:
   - **Area** of each subzone in km2. Calculated using geopandas with epsg set to 6933. To ensure accuracy of the algorithm, I compared the output to the data found in [citypopulation.de](https://www.citypopulation.de/en/singapore/admin/).
@@ -27,7 +27,7 @@ The project is broken down into the following components:
   - Extra care had to be taken to ensure that lat-lng returned was accurate. However, repeated querying of the API could lead to unexpected costs. Therefore `r2a_outletgeocode.py` was used as an intermediate step in additional data cleaning.
   - `r2b_outletgeocode.py` was the final step in cleaning the outlet data. It used their retrieved coordinates and matched it against the geometry shapes found in `r2_cleanboundary.py` and returned a final csv file.
 
-### Visualizations
+## Visualizations
 
 - `helper_drawmap.py` was used to create the map.html found in the root folder. Some notes:
   - Low-population density (<2500) regions had a side effect of making the choropleth overloaded with information. As a result, I applied a filter against these regions, effectively turning them "null" for the purposes of analysis.
@@ -35,7 +35,7 @@ The project is broken down into the following components:
   - An initial filter of a few choice brands was also applied to ensure that the consumer would not be overwhelmed by the information presented on the map.
 - `helper_drawtable.py` does some simple dataframe transformations for use in the dashboard.
 
-### Publishing of App
+## Publishing of App
 
 - `app.py` was my first foray into open-sourced dashboarding using Plotly's Dash and combines the visualizations generated in the previous section. Some additional conditional formatting had to be applied to the table to improve information transfer.
 
