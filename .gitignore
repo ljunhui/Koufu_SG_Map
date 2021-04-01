@@ -1,0 +1,6 @@
+
+.vscode/settings.json
+*.pyc
+.vscode/.ropeproject/config.py
+.vscode/.ropeproject/objectdb
+data/credentials.py
