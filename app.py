@@ -107,8 +107,7 @@ app.layout = html.Div(
                 "backgroundColor": "black",
                 "fontColor": "white",
             },
-            # style_table={"height": "500px", "overflowX": "auto", "overflowY": "auto"},
-            page_size=15,
+            style_table={"height": "500px", "overflowX": "auto", "overflowY": "auto"},
             style_cell_conditional=[
                 {"if": {"column_type": "any"}, "textAlign": "right"},
                 {"if": {"column_id": "Planning Area"}, "textAlign": "left"},
