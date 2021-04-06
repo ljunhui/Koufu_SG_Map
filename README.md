@@ -34,6 +34,7 @@ The project is broken down into the following components:
   - Various methods were explored in trying to make the outlet markers on the map visually distinctive (too much information is no information at all), finally settling on a crude colored icon with the brand's initials.
   - An initial filter of a few choice brands was also applied to ensure that the consumer would not be overwhelmed by the information presented on the map.
 - `helper_drawtable.py` does some simple dataframe transformations for use in the dashboard.
+- `helper_app.py` contains a databar function I adapted from Dash's documentation but I'm keeping it in a separate script to keep things clean.
 
 ## Publishing of App
 

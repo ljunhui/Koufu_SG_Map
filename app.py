@@ -38,32 +38,41 @@ app.layout = html.Div(
             style={"textAlign": "center"},
         ),
         html.Hr(),
-        dcc.Markdown(
-            children="""
-                    #### Objectives:
-                    
-                    - A data driven approach visualizing the population density of all 332 sub-zones found in Singapore and grouping them into 5 discrete brackets. Subzone information such as total area (in km2) and total population is provided in a tooltip.
-                    - A table of summary is also provided at the bottom of the page that aggregates information about each subzone into their main planning areas.
-                    - The dashboard is meant to be used as a supplementary tool, allowing BD managers to make quick decisions about zone demographics, paving the way for further exploration regarding the business viability of opening outlets in those zones.
-                    
-                    ###### Future Work:
-                    - Benchmark outlet sales performance against expected sales owing to population density.
-                    - Identify best brands to bring into the subzone based on subzone age-group distribution.
-                    
-                    ###### Limitations:
-                    - Commercial/industrial areas were not well covered due to the lack of workforce information but that is beyond the scope of this project.
-                     """
+        dbc.Row(
+            children=[
+                dbc.Col(
+                    dcc.Markdown(
+                        children=""" 
+                                #### Objectives:
+                                
+                                - A data driven approach visualizing the population density of all 332 sub-zones found in Singapore and grouping them into 5 discrete brackets. Subzone information such as total area (in km2) and total population is provided in a tooltip.
+                                - A table of summary is also provided at the bottom of the page that aggregates information about each subzone into their main planning areas.
+                                - The dashboard is meant to be used as a supplementary tool, allowing BD managers to make quick decisions about zone demographics, paving the way for further exploration regarding the business viability of opening outlets in those zones.
+                                
+                                ###### Future Work:
+                                - Benchmark outlet sales performance against expected sales owing to population density.
+                                - Identify best brands to bring into the subzone based on subzone age-group distribution.
+                                
+                                ###### Limitations:
+                                - Commercial/industrial areas were not well covered due to the lack of workforce information but that is beyond the scope of this project.
+                                """
+                    )
+                ),
+                dbc.Col(
+                    dcc.Markdown(
+                        children="""
+                                #### Usage Instructions:
+                                - By default, the map is set to show our foodcourt and coffeeshop brands (Koufu, Gourmet Paradise, Happy Hawkers etc). 
+                                - **Using the layer control in the top right corner of the map gives you control of which brands to show.**
+                                - The choropleth layer provides more information about the zone, with the colors indicating the population density of each zone. 
+                                The darkest colors are zones that have the highest population density. 
+                                - **Mouse over subzones (tap if on mobile) displays more information about each subzone.**
+                                """
+                    )
+                ),
+            ]
         ),
         html.Hr(),
-        dcc.Markdown(
-            children="""
-                    #### Usage Instructions:
-                    - By default, the map is set to show our foodcourt and coffeeshop brands (Koufu, Gourmet Paradise, Happy Hawkers etc). 
-                    - **Using the layer control in the top right corner of the map gives you control of which brands to show.**
-                    - The choropleth layer provides more information about the zone, with the colors indicating the population density of each zone. 
-                     The darkest colors are zones that have the highest population density. 
-                     """,
-        ),
         html.Div(
             children=html.Iframe(
                 id="map",
