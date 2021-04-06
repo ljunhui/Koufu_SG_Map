@@ -5,7 +5,9 @@ import dash
 import dash_core_components as dcc
 import dash_html_components as html
 import dash_table
+import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
+
 import pandas as pd
 import plotly.express as px
 
@@ -14,7 +16,8 @@ import plotly.express as px
 import helper_drawtable
 from helper_app import data_bars
 
-external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"]
+# external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"]
+external_stylesheets = [dbc.themes.DARKLY]
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 app.title = "Koufu in SG - Visualization"
@@ -82,11 +85,18 @@ app.layout = html.Div(
             data=df.to_dict("records"),
             columns=([{"name": i, "id": i} for i in df.columns]),
             sort_action="native",
-            style_header={"backgroundColor": "white", "fontWeight": "bold"},
+            style_header={
+                # "backgroundColor": "white",
+                "fontWeight": "bold",
+                "textAlign": "center",
+            },
             style_cell={
                 "whiteSpace": "normal",
                 "height": "auto",
+                "width": "auto",
                 "textAlign": "center",
+                "backgroundColor": "black",
+                "fontColor": "white",
             },
             style_table={"height": "500px", "overflowX": "auto", "overflowY": "auto"},
             style_cell_conditional=[
@@ -101,7 +111,7 @@ app.layout = html.Div(
                             "filter_query": "{{{}}} != 0".format(col),
                             "column_id": col,
                         },
-                        "backgroundColor": "tomato",
+                        "backgroundColor": "darkorange",
                         "color": "white",
                     }
                     for col in df.columns[4:]
