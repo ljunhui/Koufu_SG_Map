@@ -9,52 +9,18 @@ from dash.dependencies import Input, Output
 import pandas as pd
 import plotly.express as px
 
+
 # Helper mod
 import helper_drawtable
-
+from helper_app import data_bars
 
 external_stylesheets = ["https://codepen.io/chriddyp/pen/bWLwgP.css"]
 
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
-app.title= "Koufu in SG - Visualization"
+app.title = "Koufu in SG - Visualization"
 server = app.server
 
 df = helper_drawtable.main()
-
-def data_bars(df, column):
-    n_bins = 100
-    bounds = [i * (1.0 / n_bins) for i in range(n_bins + 1)]
-    ranges = [
-        ((df[column].max() - df[column].min()) * i) + df[column].min()
-        for i in bounds
-    ]
-    styles = []
-    for i in range(1, len(bounds)):
-        min_bound = ranges[i - 1]
-        max_bound = ranges[i]
-        max_bound_percentage = bounds[i] * 100
-        styles.append({
-            'if': {
-                'filter_query': (
-                    '{{{column}}} >= {min_bound}' +
-                    (' && {{{column}}} < {max_bound}' if (i < len(bounds) - 1) else '')
-                ).format(column=column, min_bound=min_bound, max_bound=max_bound),
-                'column_id': column
-            },
-            'background': (
-                """
-                    linear-gradient(90deg,
-                    #0074D9 0%,
-                    #0074D9 {max_bound_percentage}%,
-                    white {max_bound_percentage}%,
-                    white 100%)
-                """.format(max_bound_percentage=max_bound_percentage)
-            ),
-            'paddingBottom': 2,
-            'paddingTop': 2
-        })
-
-    return styles
 
 
 app.layout = html.Div(
@@ -72,8 +38,6 @@ app.layout = html.Div(
         dcc.Markdown(
             children="""
                     #### Objectives:
-                    
-                    > If I could open an outlet in only 1 **residential** location, where should it be?
                     
                     - A data driven approach visualizing the population density of all 332 sub-zones found in Singapore and grouping them into 5 discrete brackets. Subzone information such as total area (in km2) and total population is provided in a tooltip.
                     - A table of summary is also provided at the bottom of the page that aggregates information about each subzone into their main planning areas.
@@ -106,8 +70,13 @@ app.layout = html.Div(
             ),
             style={"textAlign": "center"},
         ),
-        html.Div(children="Summary table of zone information aggregated into their Planning Areas"),
-        html.Div(children="Default sort by population density in descending order", style={'fontSize':'small', 'fontStyle':'italic'}),
+        html.Div(
+            children="Summary table of zone information aggregated into their Planning Areas"
+        ),
+        html.Div(
+            children="Default sort by population density in descending order",
+            style={"fontSize": "small", "fontStyle": "italic"},
+        ),
         dash_table.DataTable(
             id="table",
             data=df.to_dict("records"),
@@ -125,8 +94,8 @@ app.layout = html.Div(
                 {"if": {"column_id": "Planning Area"}, "textAlign": "left"},
             ],
             style_data_conditional=(
-                data_bars(df, 'Population Density (/km2)') +
-                [
+                data_bars(df, "Population Density (/km2)")
+                + [
                     {
                         "if": {
                             "filter_query": "{{{}}} != 0".format(col),
@@ -140,7 +109,6 @@ app.layout = html.Div(
             ),
         ),
     ],
-    
 )
 
 if __name__ == "__main__":
